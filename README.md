@@ -26,7 +26,7 @@ python -m http.server 8000 --directory dist
 
 ## Изображения
 
-Первый экран использует предоставленную пользователем фотографию. Прозрачный слой замка подготовлен с помощью ImageGen для анимации башен. Фотографии галереи имеют отдельные лицензии:
+Первый экран использует предоставленную пользователем фотографию. Для широких экранов ImageGen расширил её по бокам: панорама заполняет экран без размытых краёв и сохраняет видимую арку целиком. Прозрачные слои замка подготовлены с помощью ImageGen для анимации башен. На узких экранах используется исходная фотография. Фотографии галереи имеют отдельные лицензии:
 
 - [Нойшванштайн — Softeis](https://commons.wikimedia.org/wiki/File:Castle_Neuschwanstein.jpg), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 - [Эйлен-Донан — Rodaxx](https://commons.wikimedia.org/wiki/File:Eilean_Donan_Castle_bridge_view.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
