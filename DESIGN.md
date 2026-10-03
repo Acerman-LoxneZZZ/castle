@@ -175,7 +175,7 @@ The interface has no raised cards or box shadows. Full-bleed photography, dim gr
 
 Scroll drives scene scale from (1) to (1.22), title exit, source-photo fade and tower separation. Transparent left/right halves clip at (50%) and move outward by up to (75vw), each rising by (16vh). Gallery incoming images slide from (100%) horizontal offset to (0), covering preceding images while those drift left by up to (7%). Matching background layers wipe from the right using `clip-path` with the same eased incoming progress.
 
-Reduced-motion mode removes transitions and hero transforms, sets pointer offsets to zero, uses immediate navigation and discrete gallery selection. Scroll-derived opacity changes remain.
+The hero is stationary when the cursor moves. Do not add pointer-following parallax. Reduced-motion mode removes transitions and hero transforms, uses immediate navigation and discrete gallery selection. Scroll-derived opacity changes remain.
 
 ## Shapes
 
