@@ -1,0 +1,7 @@
+{
+  "castle-hd.png": {"origin":"User attachment codex-clipboard-1982cf93-7b16-4020-959d-d1f40496dd9a.png","role":"Unmodified original hero photograph"},
+  "castle-cutout.png": {"origin":"ImageGen edit of user attachment; full photographic castle alpha cutout","role":"Split foreground left/right layers"},
+  "neuschwanstein.jpg": {"origin":"https://commons.wikimedia.org/wiki/File:Castle_Neuschwanstein.jpg","author":"Softeis","license":"CC BY-SA 3.0","display":"CSS crop; no file edits"},
+  "eilean-donan.jpg": {"origin":"https://commons.wikimedia.org/wiki/File:Eilean_Donan_Castle_bridge_view.jpg","author":"Rodaxx","license":"CC BY-SA 4.0","display":"CSS crop; no file edits"},
+  "chillon.jpg": {"origin":"https://commons.wikimedia.org/wiki/File:001_Chateau_de_Chillon_and_Dents_du_Midi_Photo_by_Giles_Laurent.jpg","author":"Giles Laurent, gileslaurent.com","license":"CC BY-SA 4.0","display":"1280px source thumbnail and CSS crop; no file edits"}
+}
