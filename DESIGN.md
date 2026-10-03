@@ -182,6 +182,7 @@ The hero is stationary when the cursor moves. Do not add pointer-following paral
 Gallery images are sharp-cornered photographic rectangles with responsive proportions. Hero links use (50px) pill radii. Indicators are (3px) vertical strokes with (3px) radii inside generous button targets. Navigation and arrows use open text and thin line icons. The hero alpha cutout preserves the castle silhouette; clipping creates left and right halves without adding a surrounding shape.
 
 **The Shared Frame Rule.** Keep all gallery images in one clipped viewport with a common size and a (112px) caption region. Incoming imagery covers the previous image.
+Captions stay anchored below the shared image viewport. Show only the selected castle's caption, counteracting its parent frame's movement; titles, locations and credits must never overlap during transitions.
 
 ## Components
 

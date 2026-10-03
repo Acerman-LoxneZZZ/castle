@@ -13,6 +13,8 @@ footer{padding:130px 40px 32px;background:var(--forest)}footer>p{font:400 clamp(
 .hero-sky{position:absolute;inset:0;z-index:2;background:#5799df;opacity:var(--original-opacity);pointer-events:none}
 /* A real outpainted panorama keeps the full arch visible without faded edges. */
 .hero-original picture,.tower-half picture{display:block;width:100%;height:100%}
+.frame-caption{position:absolute;top:var(--card-height);width:100%;opacity:0;pointer-events:none}
+.frame.is-active .frame-caption{opacity:1;pointer-events:auto}
 @media(min-aspect-ratio:4/3){
 .hero-world{inset:0;width:auto;transform:none}
 .hero-original img,.tower-half img{object-fit:cover;object-position:50% 100%}
