@@ -62,5 +62,71 @@
     "dimensions": "1536x1024 RGBA",
     "prompt": ".impeccable/asset-prompts/portal-arch.txt",
     "display": "Native generated alpha; unmodified file; CSS scale"
+  },
+  "hohenzollern-foreground.jpg": {
+    "origin": "https://commons.wikimedia.org/wiki/File:Burg_Hohenzollern_cropped.jpg",
+    "originalURL": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Burg_Hohenzollern_cropped.jpg",
+    "author": "Jörg Wendland; derivative crop/brightness/contrast by HeinrichStuerzl",
+    "license": "CC BY-SA 3.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/3.0",
+    "role": "Second gallery foreground",
+    "dimensions": "1600x958",
+    "display": "Resized JPEG for web delivery; CSS crop and background overlay",
+    "cssPosition": "47% 50%"
+  },
+  "hohenzollern-background.jpg": {
+    "origin": "https://commons.wikimedia.org/wiki/File:View_from_the_castle_Hohenzollern_HDR.jpg",
+    "originalURL": "https://upload.wikimedia.org/wikipedia/commons/c/c5/View_from_the_castle_Hohenzollern_HDR.jpg",
+    "author": "Ed Brambley",
+    "license": "CC BY-SA 2.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/2.0",
+    "role": "Second gallery background",
+    "dimensions": "2560x1707",
+    "display": "Resized JPEG for web delivery; CSS crop and background overlay",
+    "cssPosition": "50% 55%"
+  },
+  "mont-saint-michel-foreground.jpg": {
+    "origin": "https://commons.wikimedia.org/wiki/File:2017-04_Mont_Saint-Michel_sunset_05.jpg",
+    "originalURL": "https://upload.wikimedia.org/wikipedia/commons/7/72/2017-04_Mont_Saint-Michel_sunset_05.jpg",
+    "author": "Antoine Lamielle",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0",
+    "role": "Second gallery foreground",
+    "dimensions": "1600x1600",
+    "display": "Resized JPEG for web delivery; CSS crop and background overlay",
+    "cssPosition": "50% 50%"
+  },
+  "mont-saint-michel-background.jpg": {
+    "origin": "https://commons.wikimedia.org/wiki/File:Mont_Saint_Michel_panorama.jpg",
+    "originalURL": "https://upload.wikimedia.org/wikipedia/commons/4/48/Mont_Saint_Michel_panorama.jpg",
+    "author": "François de Dijon",
+    "license": "CC BY-SA 3.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/3.0",
+    "role": "Second gallery background",
+    "dimensions": "2560x714",
+    "display": "Resized JPEG for web delivery; CSS crop and background overlay",
+    "cssPosition": "20% 50%"
+  },
+  "segovia-foreground.jpg": {
+    "origin": "https://commons.wikimedia.org/wiki/File:Alc%C3%A1zar_de_Segovia,_Panorama.jpg",
+    "originalURL": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Alc%C3%A1zar_de_Segovia%2C_Panorama.jpg",
+    "author": "D.Rovchak",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0",
+    "role": "Second gallery foreground",
+    "dimensions": "1600x1064",
+    "display": "Resized JPEG for web delivery; CSS crop and background overlay",
+    "cssPosition": "43% 50%"
+  },
+  "segovia-background.jpg": {
+    "origin": "https://commons.wikimedia.org/wiki/File:Panor%C3%A1mica_Oto%C3%B1o_Alc%C3%A1zar_de_Segovia.jpg",
+    "originalURL": "https://upload.wikimedia.org/wikipedia/commons/4/40/Panor%C3%A1mica_Oto%C3%B1o_Alc%C3%A1zar_de_Segovia.jpg",
+    "author": "Ángel Sanz de Andrés",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0",
+    "role": "Second gallery background",
+    "dimensions": "2560x1920",
+    "display": "Resized JPEG for web delivery; CSS crop and background overlay",
+    "cssPosition": "50% 0%"
   }
 }

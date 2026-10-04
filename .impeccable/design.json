@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-04T19:28:50Z",
+  "generatedAt": "2026-10-04T20:27:53Z",
   "title": "Design System: Castle — Камень и время",
   "extensions": {
     "colorMeta": {
@@ -136,7 +136,7 @@
       },
       {
         "name": "gallery-overlap",
-        "purpose": "Each incoming frame covers the previous in one viewport; covered frames drift left up to 7%.",
+        "purpose": "In each independent gallery, incoming frames cover predecessors from right to left in one viewport; covered frames drift left up to 7%. Shared paintGallery logic, separate selection and controls.",
         "value": "ease(v)=v*v*(3-2*v); incoming x=(1-ease(incoming))*100-covered*7 percent"
       },
       {
@@ -155,14 +155,9 @@
         "value": "passage=clamp((smooth-portalTop)/portalRun); travel=ease(clamp((passage-.06)/.84)); ease(v)=v*v*(3-2*v); arch=1+travel*4.2; landscape=1.12-travel*.12"
       },
       {
-        "name": "portal-copy-exit",
-        "purpose": "Heading and supporting copy leave during the first 25% of the passage; landscape attribution remains visible.",
-        "value": "exit=ease(clamp(passage/.25)); opacity=1-exit; translateY=-48px*exit"
-      },
-      {
         "name": "portal-reduced-motion",
-        "purpose": "Static arch and landscape, full-opacity stationary copy and one 100svh section. Transform hints are disabled; normal mode enables hints only near the section.",
-        "value": "prefers-reduced-motion: reduce; image transform:none!important; will-change:auto!important; copy opacity:1; transform:none; section height:100svh"
+        "purpose": "Static arch and landscape with screen-reader-only heading and persistent attribution in one 100svh section. Transform hints are disabled; normal mode enables hints only near the section.",
+        "value": "prefers-reduced-motion: reduce; image transform:none!important; will-change:auto!important; section height:100svh"
       }
     ],
     "breakpoints": [
@@ -183,7 +178,7 @@
       }
     ],
     "portal": {
-      "placement": "After the gallery, before the closing statement",
+      "placement": "After the first gallery, before the independent continuation gallery and closing statement",
       "foreground": {
         "asset": "dist/assets/portal-arch.png",
         "dimensions": "1536x1024 RGBA",
@@ -208,10 +203,49 @@
         "mobileSectionHeight": "calc(100svh + 1250px) at max-width:480px",
         "reducedMotionSectionHeight": "100svh",
         "images": "position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none",
-        "copy": "bottom:13%; left/right:40px; max-width:900px gutters:24px; max-width:480px gutters:20px and bottom:15%",
         "credit": "bottom:24px; left/right:24px; max-width:480px bottom:22px and gutters:20px",
         "shade": "linear-gradient(180deg,rgba(8,16,12,.26),transparent 40%,rgba(9,22,17,.65))"
+      },
+      "accessibility": {
+        "heading": "Screen-reader-only h2: Проход через каменную арку; section aria-labelledby=portal-title",
+        "visibleCopy": "No visible heading or scroll instruction; photographer/license credit remains visible"
       }
+    },
+    "galleryContinuation": {
+      "placement": "After #passage, before the closing statement",
+      "selector": "#more-castles",
+      "heading": "Путешествие продолжается",
+      "order": [
+        "Гогенцоллерн",
+        "Мон-Сен-Мишель",
+        "Алькасар Сеговии"
+      ],
+      "identityNote": "Mont-Saint-Michel is a fortified island with an abbey; captions use its place name and location.",
+      "layout": {
+        "stage": "position:sticky; top:0; height:100svh; overflow:hidden; isolation:isolate",
+        "sectionHeight": "calc(100svh + 2800px)",
+        "mobileSectionHeight": "calc(100svh + 2400px) at max-width:480px",
+        "headingMaxWidth": "27vw; none at max-width:900px",
+        "components": "Existing responsive gallery frame, caption, arrows, counter and indicators"
+      },
+      "behavior": "Shared makeGallery/paintGallery; independent frames, backgrounds, active state, scroll geometry, controls, counter, credits and polite live region. Incoming imagery covers from right to left with matching background wipes; selected caption cancels frame translation.",
+      "accessibility": "Descriptive image alternatives and Russian labels; aria-current on selected indicator, disabled endpoint arrows, inherited focus outlines. Inactive frames inert and aria-hidden; continuation inert outside scroll vicinity; decorative backgrounds aria-hidden.",
+      "reducedMotion": "CSS transitions disabled, immediate control navigation and discrete rounded selection; natural scroll section retained.",
+      "assets": [
+        {
+          "foreground": "dist/assets/hohenzollern-foreground.jpg",
+          "background": "dist/assets/hohenzollern-background.jpg"
+        },
+        {
+          "foreground": "dist/assets/mont-saint-michel-foreground.jpg",
+          "background": "dist/assets/mont-saint-michel-background.jpg"
+        },
+        {
+          "foreground": "dist/assets/segovia-foreground.jpg",
+          "background": "dist/assets/segovia-background.jpg"
+        }
+      ],
+      "provenance": "dist/assets/sources.json; six resized Wikimedia JPEGs, source/author/license/dimensions/CSS crop positions and visible linked foreground/background credits"
     }
   },
   "components": [
@@ -239,16 +273,16 @@
       "css": ".ds-arrow{display:flex;align-items:center;gap:10px;min-height:44px;font:14px Arial,Helvetica,sans-serif;color:var(--paper,#fdf1e1);background:none;border:0;cursor:pointer}.ds-arrow svg{width:22px;height:24px;fill:none;stroke:currentColor;stroke-width:1.4;transition:transform .25s}.ds-arrow:hover:not(:disabled) svg{transform:translateX(3px)}.ds-arrow:disabled{opacity:.3;cursor:default}.ds-arrow:focus-visible{outline:2px solid var(--paper,#fdf1e1);outline-offset:6px}@media(prefers-reduced-motion:reduce){.ds-arrow svg{transition:none}}"
     },
     {
-      "name": "Portal Copy and Attribution",
+      "name": "Portal Attribution",
       "kind": "custom",
-      "description": "Self-contained copy/credit preview for the Through the Arch episode. The production photographic layers and scroll geometry are specified in extensions.portal; this preview does not approximate the masonry.",
-      "html": "<section class=\"ds-portal-text\" aria-labelledby=\"ds-portal-title\"><div class=\"ds-portal-copy\"><h2 id=\"ds-portal-title\">Сквозь арку.</h2><p>Листайте — путь продолжается.</p></div><p class=\"ds-portal-credit\"><a href=\"https://commons.wikimedia.org/wiki/File:Alpsee_Neuschwanstein.jpg\" target=\"_blank\" rel=\"noopener\">Пейзаж: Dmytro Balkhovitin</a> · <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a></p></section>",
-      "css": ".ds-portal-text{padding:40px 24px 24px;background:var(--forest,#172b25);color:var(--paper,#fdf1e1);text-align:center}.ds-portal-copy h2{margin:0;font:400 clamp(44px,6vw,88px)/1.05 Georgia,serif;letter-spacing:-.03em;text-wrap:balance}.ds-portal-copy p{margin:18px 0 0;font:14px/1.4 Arial,Helvetica,sans-serif}.ds-portal-credit{margin:40px 0 0;font:12px/1.4 Arial,Helvetica,sans-serif}.ds-portal-credit a{color:inherit;text-decoration:none}.ds-portal-credit a:hover{text-decoration:underline;text-underline-offset:3px}.ds-portal-credit a:focus-visible{outline:2px solid var(--paper,#fdf1e1);outline-offset:6px}@media(max-width:900px){.ds-portal-copy h2{font-size:clamp(44px,8vw,72px)}}@media(max-width:480px){.ds-portal-text{padding-left:20px;padding-right:20px}.ds-portal-copy h2{font-size:44px}}"
+      "description": "Self-contained credit preview for the arch episode. The production heading is screen-reader-only; no visible title or instruction. Photographic layers and scroll geometry are specified in extensions.portal.",
+      "html": "<section class=\"ds-portal-text\" aria-labelledby=\"ds-portal-title\"><h2 class=\"ds-sr-only\" id=\"ds-portal-title\">Проход через каменную арку</h2><p class=\"ds-portal-credit\"><a href=\"https://commons.wikimedia.org/wiki/File:Alpsee_Neuschwanstein.jpg\" target=\"_blank\" rel=\"noopener\">Пейзаж: Dmytro Balkhovitin</a> · <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a></p></section>",
+      "css": ".ds-portal-text{position:relative;padding:24px;background:var(--forest,#172b25);color:var(--paper,#fdf1e1);text-align:center}.ds-sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.ds-portal-credit{margin:0;font:12px/1.4 Arial,Helvetica,sans-serif}.ds-portal-credit a{color:inherit;text-decoration:none}.ds-portal-credit a:hover{text-decoration:underline;text-underline-offset:3px}.ds-portal-credit a:focus-visible{outline:2px solid var(--paper,#fdf1e1);outline-offset:6px}@media(max-width:480px){.ds-portal-text{padding-left:20px;padding-right:20px}}"
     }
   ],
   "narrative": {
     "northStar": "Камень и время",
-    "overview": "The user's pinned Mostar and Saisei references establish oversized cream Ogg lettering, cinematic photography and scroll choreography. The supplied 2048 × 1536 hero photograph transitions into transparent left/right tower halves that separate outward to reveal other real castles.\n\nThe mood is quiet, spacious and cinematic. Нойшванштайн, Эйлен-Донан and Шильон appear in a shared portrait viewport: each incoming photo covers the preceding one while its matching full-screen background wipes into view. Russian captions include photographer and license links.",
+    "overview": "The user's pinned Mostar and Saisei references establish oversized cream Ogg lettering, cinematic photography and scroll choreography. The supplied 2048 × 1536 hero photograph transitions into transparent left/right tower halves that separate outward to reveal other real castles.\n\nThe mood is quiet, spacious and cinematic. Нойшванштайн, Эйлен-Донан and Шильон appear in a shared portrait viewport: each incoming photo covers the preceding one while its matching full-screen background wipes into view. Russian captions include photographer and license links.\n\nA full-bleed arch passage has a screen-reader-only heading and visible landscape attribution. Its continuation reuses the same gallery language for Гогенцоллерн, Мон-Сен-Мишель and Алькасар Сеговии with independent controls and separate sourced backgrounds.",
     "keyCharacteristics": [
       "Oversized serif display type over photography",
       "Transparent castle halves separating outward",
