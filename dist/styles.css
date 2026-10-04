@@ -22,3 +22,7 @@ footer{padding:130px 40px 32px;background:var(--forest)}footer>p{font:400 clamp(
 }
 
 
+
+.gallery-background-credit{position:absolute;bottom:12px;left:20px;right:20px;text-align:center;font-size:12px;line-height:1.4;color:var(--paper)}
+.gallery-background-credit a:hover{text-decoration:underline;text-underline-offset:3px}
+.gallery-back:nth-child(2) img{object-position:50% 65%}

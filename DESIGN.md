@@ -134,7 +134,7 @@ The palette pairs dark forest and ink with warm paper. Frontmatter owns the reus
 - **Stage Sky / Hero Sky:** blue base layers behind the photographic hero.
 - **Scrollbar:** muted scrollbar thumb.
 
-**The Matched Background Rule.** Each gallery foreground uses the same photograph as its dim full-screen background. Advance their overlap and wipe together.
+**The Landscape Background Rule.** Preserve the existing foreground castle photos. Pair them, in order, with separate approved landscapes: Alpsee, Loch Duich at sunset and Lake Geneva from Chillon. Advance the foreground overlap and background wipe together; show one linked background photographer/license credit beneath the gallery controls.
 
 ## Typography
 
@@ -200,7 +200,7 @@ Use `castle-hd.png`, the supplied (2048 × 1536px) source photo, and `castle-cut
 
 ### Gallery Frames and Backgrounds
 
-Use the three sourced real castles in their implemented order. Each foreground and background share the same photo, with complementary `object-position` crops. Frames stack by index; the next slides across the preceding frame, and its background wipes into view. Captions name the castle, its location and linked photographer/license attribution. Preserve visible credit links and `dist/assets/sources.json` provenance.
+Use the three sourced real castles in their implemented order. Foreground castle photos remain unchanged; separate landscape backgrounds use complementary `object-position` crops. Frames stack by index; the next slides across the preceding frame, and its background wipes into view. Captions name the castle, its location and linked photographer/license attribution. Preserve visible credit links and `dist/assets/sources.json` provenance.
 
 ### Gallery Controls
 

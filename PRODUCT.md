@@ -16,3 +16,5 @@ Keep the supplied high-resolution photograph for the introductory castle, Ogg di
 On wide screens, the user's latest refinement replaces faded edges with an ImageGen-outpainted panorama and matching alpha foreground. Preserve the small castle scale and complete arch; extend photographic sky, walls and grass to both screen edges. Narrow screens keep the original photograph.
 
 Desktop and mobile; keyboard navigation, buttons and scroll-driven picture changes; reduced motion. Confirmed title: Castle — Камень и время. Intro uses the latest 2048×1536 supplied photo. An AI-prepared transparent cutout splits into independently animated left and right halves. Gallery uses sourced photos of Neuschwanstein, Eilean Donan and Chillon; new foreground and background photos cover their predecessors during scroll. No side-by-side track. Provide photo attribution and license links. No historical claims.
+
+The approved gallery background photographs are separate landscapes: Alpsee, Loch Duich at sunset and Lake Geneva. Preserve all three small castle photographs, synchronized scroll transitions and separate linked foreground/background attribution.

@@ -33,3 +33,9 @@ python -m http.server 8000 --directory dist
 - [Шильон — Giles Laurent, gileslaurent.com](https://commons.wikimedia.org/wiki/File:001_Chateau_de_Chillon_and_Dents_du_Midi_Photo_by_Giles_Laurent.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 Авторство и ссылки на лицензии также показаны на сайте. Подробности находятся в `dist/assets/sources.json`.
+
+Фоновые фотографии галереи отличаются от центральных фотографий замков:
+
+- [Альпзее — Dmytro Balkhovitin](https://commons.wikimedia.org/wiki/File:Alpsee_Neuschwanstein.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+- [Лох-Дуих на закате — Chen Zhao](https://commons.wikimedia.org/wiki/File:Loch_Duich_in_the_sunset.jpg), [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/).
+- [Женевское озеро — Dmitry A. Mottl](https://commons.wikimedia.org/wiki/File:Lake_Geneva_from_Chillon_Castle.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
