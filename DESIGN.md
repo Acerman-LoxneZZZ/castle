@@ -169,6 +169,8 @@ At (480px) and below, the header uses two columns with (20px) gutters, hides its
 
 Short landscape viewports (height at most 620px, width at least 650px) use a (34vw × 53vh) image, viewport top (17%), smaller typography and (20px) bottom control offsets. Preserve enough room for the image, caption, attribution and controls together.
 
+The arch episode is a separate full-bleed section between gallery and footer. Its sticky stage is (`100svh`) inside `calc(100svh + 1800px)`; at (480px) and below, the additional scroll run is (1250px). Both photographic layers cover the stage. Landscape crop is (`50% 55%`), with scale origin (`50% 60%`); the arch scale origin is (`50% 65%`). Copy sits (13%) from the bottom within (40px) gutters, reduced to (24px) at (900px) and (20px) at (480px). On mobile, copy rises to a (15%) bottom offset. Attribution uses (24px) gutters and bottom offset, changing to (20px) gutters and a (22px) bottom offset on mobile. Reduced motion shortens the entire section to (`100svh`) and displays a static arch, landscape and copy.
+
 ## Elevation & Depth
 
 The interface has no raised cards or box shadows. Full-bleed photography, dim gradient overlays, castle alpha cutout, hero scaling and synchronized gallery wipes provide depth. Intro text uses `0 2px 18px #0008` as a contrast shadow. Caption background is `linear-gradient(180deg,rgba(12,23,17,.92),rgba(12,23,17,.72))`.
@@ -205,6 +207,14 @@ Use the three sourced real castles in their implemented order. Foreground castle
 ### Gallery Controls
 
 Indicator targets are (28px × 44px), with (38px) strokes scaling from (.58) to (1) over (.35s); mobile targets/strokes are (36px)/(30px) high. Arrow buttons have (44px) minimum height, (34px) spacing and (3px) directional hover movement over (.25s). Disabled endpoint arrows use (.3) opacity. Scroll, keyboard arrows, buttons and horizontal swipes select the same three castles.
+
+### Through the Arch
+
+Use the native generated (1536 × 1024px) `portal-arch.png` alpha foreground over the existing approved `alpsee-background.jpg`. The foreground is a fictional Gothic masonry wall inspired by the supplied stonework, with a genuine transparent opening; retain its photographic texture and alpha rather than substituting a geometric mask. Full-bleed imagery carries the depth, with no frame or additional controls. A contrast overlay uses `linear-gradient(180deg,rgba(8,16,12,.26),transparent 40%,rgba(9,22,17,.65))`.
+
+The cream heading “Сквозь арку.” uses Georgia (400), `clamp(44px,6vw,88px)` with (1.05) leading and (-.03em) tracking. At (900px) and below, use `clamp(44px,8vw,72px)`; at (480px) and below, use (44px). Supporting scroll copy uses Arial (14px) with (1.4) leading and an (18px) top margin. The permanent photographer/license credit uses Arial (12px), (1.4) leading and paper text; links underline on hover and retain the existing focus outline. Keep the semantic heading and descriptive landscape alternative; the decorative arch is hidden from assistive technology.
+
+Reuse the existing animation-frame scheduler and (.15) scroll interpolation. Let `passage` be clamped scroll progress through the extra section run, `ease(v)=v*v*(3-2*v)`, and `travel=ease(clamp((passage-.06)/.84))`. Scale the arch from (1) to (5.2) using `1 + travel*4.2` and the landscape from (1.12) to (1) using `1.12 - travel*.12`. The title exits during the first (25%) of the run: opacity is `1-ease(clamp(passage/.25))` and vertical translation reaches (-48px). Reversing scroll reverses this passage. Apply transform hints only near the section; there is no pointer-driven movement or scroll lock. Reduced motion disables both image transforms, keeps copy at full opacity without translation and uses the static single-screen layout described above. Preserve `.impeccable/asset-prompts/portal-arch.txt` and `dist/assets/sources.json` as the prompt and provenance records.
 
 ### Focus and Accessibility
 

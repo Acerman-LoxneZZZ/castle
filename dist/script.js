@@ -8,10 +8,11 @@ const backgrounds=[...document.querySelectorAll('.gallery-back')],dots=[...docum
 const header=document.querySelector('.site-header'),previous=document.getElementById('previous'),next=document.getElementById('next');
 const counter=document.getElementById('current-frame'),live=document.getElementById('gallery-live');
 const intro=document.querySelector('.intro-copy'),bottom=document.querySelector('.hero-bottom');
+const portal=document.querySelector('.portal-scroll'),portalStage=document.querySelector('.portal-stage');
 const names=['Нойшванштайн','Эйлен-Донан','Шильон'],reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const clamp=(v,min=0,max=1)=>Math.min(max,Math.max(min,v)),ease=v=>v*v*(3-2*v);
 let active=-1,pending=false,smooth=scrollY,geometry={};
-function measure(){const heroRun=parseFloat(getComputedStyle(cinema).getPropertyValue('--hero-run')),total=cinema.offsetHeight-stage.offsetHeight;geometry={top:cinema.offsetTop,heroRun,galleryTop:cinema.offsetTop+heroRun,galleryRun:total-heroRun};requestTick();}
+function measure(){const heroRun=parseFloat(getComputedStyle(cinema).getPropertyValue('--hero-run')),total=cinema.offsetHeight-stage.offsetHeight;geometry={top:cinema.offsetTop,heroRun,galleryTop:cinema.offsetTop+heroRun,galleryRun:total-heroRun,portalTop:portal.offsetTop,portalRun:Math.max(1,portal.offsetHeight-portalStage.offsetHeight)};requestTick();}
 function select(index){index=clamp(index,0,frames.length-1);scrollTo({top:geometry.galleryTop+geometry.galleryRun*index/(frames.length-1),behavior:reduced.matches?'instant':'smooth'});}
 function update(){pending=false;const target=scrollY;smooth=reduced.matches?target:smooth+(target-smooth)*.15;
 const progress=clamp((smooth-geometry.top)/geometry.heroRun),exit=ease(clamp(progress/.48)),split=Math.pow(ease(clamp((progress-.2)/.76)),1.3),cutout=ease(clamp((progress-.12)/.13)),original=1-ease(clamp((progress-.2)/.23)),enter=ease(clamp((progress-.76)/.24));
@@ -20,6 +21,12 @@ const ready=progress>.76;gallery.classList.toggle('is-ready',ready);gallery.iner
 const position=clamp((smooth-geometry.galleryTop)/geometry.galleryRun)*(frames.length-1),selected=Math.round(position),visual=reduced.matches?selected:position;
 frames.forEach((frame,i)=>{const incoming=clamp(visual-(i-1)),covered=clamp(visual-i),visible=i===0||visual>i-1,shift=i===0?-covered*7:(1-ease(incoming))*100-covered*7;frame.style.visibility=visible?'visible':'hidden';frame.style.zIndex=String(i+1);frame.style.transform=`translate3d(${shift}%,0,0)`;captions[i].style.transform=`translate3d(${-shift}%,0,0)`;frame.inert=i!==selected;frame.setAttribute('aria-hidden',i===selected?'false':'true');backgrounds[i].style.clipPath=`inset(0 0 0 ${i===0?0:(1-ease(incoming))*100}%)`;});
 if(active!==selected){active=selected;counter.textContent=String(active+1);dots.forEach((dot,i)=>{dot.classList.toggle('is-active',i===active);if(i===active)dot.setAttribute('aria-current','true');else dot.removeAttribute('aria-current');});frames.forEach((frame,i)=>frame.classList.toggle('is-active',i===active));backgroundCredits.forEach((credit,i)=>credit.hidden=i!==active);previous.disabled=active===0;next.disabled=active===frames.length-1;live.textContent=`${names[active]}, ${active+1} из ${frames.length}`;}
+const passage=clamp((smooth-geometry.portalTop)/geometry.portalRun),travel=ease(clamp((passage-.06)/.84));
+portal.style.setProperty('--portal-scale',(1+travel*4.2).toFixed(4));
+portal.style.setProperty('--landscape-scale',(1.12-travel*.12).toFixed(4));
+portal.style.setProperty('--portal-copy-opacity',(1-ease(clamp(passage/.25))).toFixed(4));
+portal.style.setProperty('--portal-copy-y',`${-ease(clamp(passage/.25))*48}px`);
+portal.classList.toggle('is-near',smooth>geometry.portalTop-innerHeight&&smooth<geometry.portalTop+portal.offsetHeight);
 if(Math.abs(target-smooth)>.12)requestTick();}
 function requestTick(){if(!pending){pending=true;requestAnimationFrame(update);}}
 addEventListener('scroll',requestTick,{passive:true});addEventListener('resize',measure,{passive:true});reduced.addEventListener('change',requestTick);

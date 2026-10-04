@@ -39,3 +39,5 @@ python -m http.server 8000 --directory dist
 - [Альпзее — Dmytro Balkhovitin](https://commons.wikimedia.org/wiki/File:Alpsee_Neuschwanstein.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 - [Лох-Дуих на закате — Chen Zhao](https://commons.wikimedia.org/wiki/File:Loch_Duich_in_the_sunset.jpg), [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/).
 - [Женевское озеро — Dmitry A. Mottl](https://commons.wikimedia.org/wiki/File:Lake_Geneva_from_Chillon_Castle.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+После галереи добавлен экран «Сквозь арку»: при прокрутке каменная арка увеличивается и открывает пейзаж Альпзее. Арка создана в ImageGen, точный промпт сохранён в .impeccable/asset-prompts/portal-arch.txt. При уменьшении движения показывается статичный экран.

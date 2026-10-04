@@ -1,0 +1,10 @@
+Use case: photorealistic-natural
+Asset type: one native transparent PNG foreground portal for a cinematic website scroll-through effect.
+Input image: supplied castle photograph is architectural and stone-material reference only.
+Primary request: create a NEW fictional close-up Gothic pointed stone gateway inspired by the reference, not an exact historical interior or a recreation of the full castle.
+Composition: landscape 3:2 canvas, straight-on camera facing one massive weathered stone pointed arch. Full-bleed stone wall fills the entire left edge, right edge, top edge and both upper corners; the wall is cropped by the canvas with absolutely NO exterior silhouette or transparent perimeter. The clear central arch opening occupies about 42% of image width, extending from x=29% to x=71%; its pointed apex is centered near y=18%. The arch opening continues uninterrupted through the bottom edge of the image. There is no floor, ground, threshold or sill across it.
+Transparency: ONLY the central arch opening is truly alpha transparent (alpha zero), including where it meets the bottom edge. Do not paint anything inside this opening: no black, white, gray, checkerboard, sky, trees, mountains, scenery, doors or interior. Outside the opening, ALL wall and canvas corners remain fully opaque stone. This is an architectural wall with a transparent hole, not an isolated arch cutout.
+Depth: thick portal columns and arch with clearly visible inner stone reveals; convincing deep stone masonry, subtle bevel and natural shaded inner surfaces framing the transparent hole.
+Materials: realistic worn charcoal and sand-colored limestone blocks and irregular coursed masonry matching the reference; restrained subtle moss in joints. Crisp photographic mineral texture, refined cinematic light, natural cool Alpine daylight with soft directional shadows.
+Avoid: decoration, inscriptions, text, symbols, people, lamps, UI, extra windows or openings, floor across opening, blur, excessive grunge, painted background, artificial checkerboard, cropped-off arch apex.
+Deliver exactly one finished image.

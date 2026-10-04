@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-04T19:28:50Z",
+  "title": "Design System: Castle — Камень и время",
+  "extensions": {
+    "colorMeta": {
+      "forest": {
+        "role": "primary",
+        "displayName": "Forest"
+      },
+      "paper": {
+        "role": "primary",
+        "displayName": "Warm Paper"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink"
+      },
+      "paper-hover": {
+        "role": "neutral",
+        "displayName": "Paper Hover"
+      },
+      "paper-note": {
+        "role": "neutral",
+        "displayName": "Paper Note"
+      },
+      "paper-indicator": {
+        "role": "neutral",
+        "displayName": "Inactive Paper Indicator"
+      },
+      "gallery-note": {
+        "displayName": "Gallery Note",
+        "role": "neutral"
+      },
+      "header-divider": {
+        "displayName": "Header Divider",
+        "role": "neutral"
+      },
+      "footer-divider": {
+        "displayName": "Footer Divider",
+        "role": "neutral"
+      },
+      "header-surface": {
+        "displayName": "Header Surface",
+        "role": "neutral"
+      },
+      "stage-sky": {
+        "displayName": "Stage Sky",
+        "role": "neutral"
+      },
+      "hero-sky": {
+        "displayName": "Hero Sky",
+        "role": "neutral"
+      },
+      "scrollbar": {
+        "displayName": "Scrollbar",
+        "role": "neutral"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Ogg Display",
+        "purpose": "Oversized uppercase Latin hero title."
+      },
+      "headline": {
+        "displayName": "Gallery Headline",
+        "purpose": "Russian gallery section heading."
+      },
+      "title": {
+        "displayName": "Castle Title",
+        "purpose": "Real castle names in gallery captions."
+      },
+      "body": {
+        "displayName": "Interface Body",
+        "purpose": "Supporting frame copy and compact controls."
+      },
+      "intro": {
+        "displayName": "Hero Intro",
+        "purpose": "Two-line centered introductory copy."
+      },
+      "label": {
+        "displayName": "Peripheral Label",
+        "purpose": "Uppercase annotations around the photographic field."
+      },
+      "counter": {
+        "displayName": "Gallery Counter",
+        "purpose": "Tabular current/total castle counter."
+      },
+      "closing": {
+        "displayName": "Closing Statement",
+        "purpose": "Large Russian serif closing statement."
+      }
+    },
+    "shadows": [
+      {
+        "name": "intro-text",
+        "purpose": "Intro copy contrast shadow; no surface elevation.",
+        "value": "0 2px 18px #0008"
+      }
+    ],
+    "motion": [
+      {
+        "name": "hero-tag",
+        "purpose": "Brighten fill and translate upward by 3px on hover.",
+        "value": "background .2s, transform .2s"
+      },
+      {
+        "name": "header",
+        "purpose": "Translucent gallery navigation state.",
+        "value": "background .4s, border-color .4s"
+      },
+      {
+        "name": "nav-underline",
+        "purpose": "Reveal underline from the left.",
+        "value": "transform .3s"
+      },
+      {
+        "name": "indicator",
+        "purpose": "Inactive vertical stroke scale .58, active scale 1.",
+        "value": "transform .35s, background .35s"
+      },
+      {
+        "name": "arrow",
+        "purpose": "Directional hover movement of 3px.",
+        "value": "transform .25s"
+      },
+      {
+        "name": "scroll-follow",
+        "purpose": "Smooth scroll-derived split hero and overlapping gallery.",
+        "value": "requestAnimationFrame; interpolation factor .15"
+      },
+      {
+        "name": "split-hero",
+        "purpose": "Matching transparent castle halves separate at a 50% clip boundary; transform origin 50% 65%.",
+        "value": "translate3d(±75vw * split,-16vh * split,0); scale(1 + progress * .22)"
+      },
+      {
+        "name": "gallery-overlap",
+        "purpose": "Each incoming frame covers the previous in one viewport; covered frames drift left up to 7%.",
+        "value": "ease(v)=v*v*(3-2*v); incoming x=(1-ease(incoming))*100-covered*7 percent"
+      },
+      {
+        "name": "background-wipe",
+        "purpose": "Reveal the matching background from right to left with foreground incoming progress.",
+        "value": "clip-path: inset(0 0 0 (1-ease(incoming))*100%)"
+      },
+      {
+        "name": "reduced-motion",
+        "purpose": "Disable CSS transitions and hero transforms, immediate navigation and discrete gallery selection; opacity changes remain. Hero remains stationary on pointer movement in every mode.",
+        "value": "prefers-reduced-motion: reduce"
+      },
+      {
+        "name": "portal-travel",
+        "purpose": "Reversible scroll passage through a native alpha stone gateway; foreground grows from 1 to 5.2 around 50% 65%, landscape settles from 1.12 to 1 around 50% 60%. Uses the existing .15 scroll interpolation; no pointer response or scroll lock.",
+        "value": "passage=clamp((smooth-portalTop)/portalRun); travel=ease(clamp((passage-.06)/.84)); ease(v)=v*v*(3-2*v); arch=1+travel*4.2; landscape=1.12-travel*.12"
+      },
+      {
+        "name": "portal-copy-exit",
+        "purpose": "Heading and supporting copy leave during the first 25% of the passage; landscape attribution remains visible.",
+        "value": "exit=ease(clamp(passage/.25)); opacity=1-exit; translateY=-48px*exit"
+      },
+      {
+        "name": "portal-reduced-motion",
+        "purpose": "Static arch and landscape, full-opacity stationary copy and one 100svh section. Transform hints are disabled; normal mode enables hints only near the section.",
+        "value": "prefers-reduced-motion: reduce; image transform:none!important; will-change:auto!important; copy opacity:1; transform:none; section height:100svh"
+      }
+    ],
+    "breakpoints": [
+      {
+        "query": "(max-width:900px)",
+        "name": "tablet",
+        "value": "900px"
+      },
+      {
+        "query": "(max-width:480px)",
+        "name": "mobile",
+        "value": "480px"
+      },
+      {
+        "query": "(max-height:620px) and (min-width:650px)",
+        "name": "short-landscape",
+        "value": "620px"
+      }
+    ],
+    "portal": {
+      "placement": "After the gallery, before the closing statement",
+      "foreground": {
+        "asset": "dist/assets/portal-arch.png",
+        "dimensions": "1536x1024 RGBA",
+        "origin": "Native ImageGen alpha; fictional Gothic masonry inspired by supplied castle-hd.png",
+        "prompt": ".impeccable/asset-prompts/portal-arch.txt",
+        "transformOrigin": "50% 65%",
+        "accessibility": "Decorative; empty alt and aria-hidden=true"
+      },
+      "landscape": {
+        "asset": "dist/assets/alpsee-background.jpg",
+        "objectPosition": "50% 55%",
+        "transformOrigin": "50% 60%",
+        "alt": "Горный пейзаж и озеро Альпзее за каменной аркой",
+        "credit": "Dmytro Balkhovitin · CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Alpsee_Neuschwanstein.jpg",
+        "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "provenance": "dist/assets/sources.json",
+      "layout": {
+        "stage": "position:sticky; top:0; height:100svh; overflow:hidden; isolation:isolate",
+        "sectionHeight": "calc(100svh + 1800px)",
+        "mobileSectionHeight": "calc(100svh + 1250px) at max-width:480px",
+        "reducedMotionSectionHeight": "100svh",
+        "images": "position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none",
+        "copy": "bottom:13%; left/right:40px; max-width:900px gutters:24px; max-width:480px gutters:20px and bottom:15%",
+        "credit": "bottom:24px; left/right:24px; max-width:480px bottom:22px and gutters:20px",
+        "shade": "linear-gradient(180deg,rgba(8,16,12,.26),transparent 40%,rgba(9,22,17,.65))"
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Hero Tag",
+      "kind": "chip",
+      "refersTo": "hero-tag",
+      "description": "Cream pill link selecting a real castle.",
+      "html": "<a class=\"ds-hero-tag\" href=\"#gallery\">Горы</a>",
+      "css": ".ds-hero-tag{display:inline-block;padding:12px 24px;background:var(--paper,#fdf1e1);color:var(--ink,#111b16);border-radius:50px;font:15px Arial,Helvetica,sans-serif;text-decoration:none;transition:background .2s,transform .2s}.ds-hero-tag:hover{background:#fff;transform:translateY(-3px)}.ds-hero-tag:focus-visible{outline:2px solid var(--paper,#fdf1e1);outline-offset:6px}@media(prefers-reduced-motion:reduce){.ds-hero-tag{transition:none}}"
+    },
+    {
+      "name": "Gallery Indicator",
+      "kind": "button",
+      "refersTo": "gallery-indicator",
+      "description": "Vertical progress marker; aria-current represents the active view.",
+      "html": "<button class=\"ds-indicator\" aria-label=\"Показать Нойшванштайн\" aria-current=\"true\"><span></span></button><button class=\"ds-indicator\" aria-label=\"Показать Эйлен-Донан\"><span></span></button>",
+      "css": ".ds-indicator{display:inline-grid;place-items:center;padding:5px 6px;width:28px;height:44px;background:none;border:0;cursor:pointer;color:var(--paper,#fdf1e1)}.ds-indicator span{height:38px;width:3px;border-radius:3px;background:#fdf1e168;transform:scaleY(.58);transition:transform .35s,background .35s}.ds-indicator[aria-current=true] span{transform:scaleY(1);background:var(--paper,#fdf1e1)}.ds-indicator:hover span{background:var(--paper,#fdf1e1)}.ds-indicator:focus-visible{outline:2px solid var(--paper,#fdf1e1);outline-offset:6px}@media(prefers-reduced-motion:reduce){.ds-indicator span{transition:none}}"
+    },
+    {
+      "name": "Gallery Arrow",
+      "kind": "button",
+      "description": "Open text and line icon control; endpoint disabled state is dimmed.",
+      "html": "<button class=\"ds-arrow\" aria-label=\"Следующий замок\">Далее<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 12h16m-6-6 6 6-6 6\"/></svg></button>",
+      "css": ".ds-arrow{display:flex;align-items:center;gap:10px;min-height:44px;font:14px Arial,Helvetica,sans-serif;color:var(--paper,#fdf1e1);background:none;border:0;cursor:pointer}.ds-arrow svg{width:22px;height:24px;fill:none;stroke:currentColor;stroke-width:1.4;transition:transform .25s}.ds-arrow:hover:not(:disabled) svg{transform:translateX(3px)}.ds-arrow:disabled{opacity:.3;cursor:default}.ds-arrow:focus-visible{outline:2px solid var(--paper,#fdf1e1);outline-offset:6px}@media(prefers-reduced-motion:reduce){.ds-arrow svg{transition:none}}"
+    },
+    {
+      "name": "Portal Copy and Attribution",
+      "kind": "custom",
+      "description": "Self-contained copy/credit preview for the Through the Arch episode. The production photographic layers and scroll geometry are specified in extensions.portal; this preview does not approximate the masonry.",
+      "html": "<section class=\"ds-portal-text\" aria-labelledby=\"ds-portal-title\"><div class=\"ds-portal-copy\"><h2 id=\"ds-portal-title\">Сквозь арку.</h2><p>Листайте — путь продолжается.</p></div><p class=\"ds-portal-credit\"><a href=\"https://commons.wikimedia.org/wiki/File:Alpsee_Neuschwanstein.jpg\" target=\"_blank\" rel=\"noopener\">Пейзаж: Dmytro Balkhovitin</a> · <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a></p></section>",
+      "css": ".ds-portal-text{padding:40px 24px 24px;background:var(--forest,#172b25);color:var(--paper,#fdf1e1);text-align:center}.ds-portal-copy h2{margin:0;font:400 clamp(44px,6vw,88px)/1.05 Georgia,serif;letter-spacing:-.03em;text-wrap:balance}.ds-portal-copy p{margin:18px 0 0;font:14px/1.4 Arial,Helvetica,sans-serif}.ds-portal-credit{margin:40px 0 0;font:12px/1.4 Arial,Helvetica,sans-serif}.ds-portal-credit a{color:inherit;text-decoration:none}.ds-portal-credit a:hover{text-decoration:underline;text-underline-offset:3px}.ds-portal-credit a:focus-visible{outline:2px solid var(--paper,#fdf1e1);outline-offset:6px}@media(max-width:900px){.ds-portal-copy h2{font-size:clamp(44px,8vw,72px)}}@media(max-width:480px){.ds-portal-text{padding-left:20px;padding-right:20px}.ds-portal-copy h2{font-size:44px}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Камень и время",
+    "overview": "The user's pinned Mostar and Saisei references establish oversized cream Ogg lettering, cinematic photography and scroll choreography. The supplied 2048 × 1536 hero photograph transitions into transparent left/right tower halves that separate outward to reveal other real castles.\n\nThe mood is quiet, spacious and cinematic. Нойшванштайн, Эйлен-Донан and Шильон appear in a shared portrait viewport: each incoming photo covers the preceding one while its matching full-screen background wipes into view. Russian captions include photographer and license links.",
+    "keyCharacteristics": [
+      "Oversized serif display type over photography",
+      "Transparent castle halves separating outward",
+      "Sharp-cornered overlapping photographic frames",
+      "Synchronized matching background wipes",
+      "Visible photographer/license attribution",
+      "Equivalent scroll, keyboard, button and swipe navigation"
+    ],
+    "rules": [
+      {
+        "name": "The Landscape Background Rule",
+        "body": "Keep the foreground castle photos unchanged. Use separate approved Alpsee, Loch Duich sunset and Lake Geneva backgrounds, with synchronized wipes and a visible photographer/license credit.",
+        "section": "colors"
+      },
+      {
+        "name": "The Typeface Role Rule",
+        "body": "Ogg carries Latin display, Georgia carries Russian editorial headings, Arial carries interface copy.",
+        "section": "typography"
+      },
+      {
+        "body": "Keep gallery images stacked in one clipped viewport with a common size and 112px caption region; incoming imagery covers the previous frame.",
+        "name": "The Shared Frame Rule",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do preserve the pinned reference direction, cream typography and spacious photography",
+      "Do use the supplied high-resolution castle and aligned transparent halves for the opening",
+      "Do use other real sourced castles with visible photo credits",
+      "Do synchronize foreground overlap and matching background wipes",
+      "Do preserve Russian copy, focus visibility, equivalent controls and responsive/reduced-motion behavior"
+    ],
+    "donts": [
+      "Don't restore repeated crops from the supplied hero photo",
+      "Don't turn the gallery into a side-by-side strip or round its frames",
+      "Don't invent historical claims, castle identities or photo provenance",
+      "Don't introduce an unrelated identity or raised cards"
+    ]
+  }
+}

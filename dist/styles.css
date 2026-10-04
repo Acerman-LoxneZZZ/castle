@@ -26,3 +26,19 @@ footer{padding:130px 40px 32px;background:var(--forest)}footer>p{font:400 clamp(
 .gallery-background-credit{position:absolute;bottom:12px;left:20px;right:20px;text-align:center;font-size:12px;line-height:1.4;color:var(--paper)}
 .gallery-background-credit a:hover{text-decoration:underline;text-underline-offset:3px}
 .gallery-back:nth-child(2) img{object-position:50% 65%}
+
+.portal-scroll{position:relative;height:calc(100svh + 1800px);background:var(--forest);--portal-scale:1;--landscape-scale:1.12;--portal-copy-opacity:1;--portal-copy-y:0px}
+.portal-stage{position:sticky;top:0;height:100svh;overflow:hidden;isolation:isolate;background:var(--forest)}
+.portal-landscape,.portal-arch{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.portal-landscape{object-position:50% 55%;transform:scale(var(--landscape-scale));transform-origin:50% 60%}
+.portal-arch{z-index:1;transform:scale(var(--portal-scale));transform-origin:50% 65%}
+.portal-scroll.is-near .portal-arch,.portal-scroll.is-near .portal-landscape{will-change:transform}
+.portal-shade{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(8,16,12,.26),transparent 40%,rgba(9,22,17,.65))}
+.portal-copy{position:absolute;z-index:3;bottom:13%;left:40px;right:40px;text-align:center;opacity:var(--portal-copy-opacity);transform:translateY(var(--portal-copy-y))}
+.portal-copy h2{font:400 clamp(44px,6vw,88px)/1.05 Georgia,serif;letter-spacing:-.03em;text-wrap:balance}
+.portal-copy p{margin-top:18px;font-size:14px;line-height:1.4}
+.portal-credit{position:absolute;z-index:3;bottom:24px;left:24px;right:24px;text-align:center;font-size:12px;line-height:1.4;color:var(--paper)}
+.portal-credit a:hover{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:900px){.portal-copy{left:24px;right:24px}.portal-copy h2{font-size:clamp(44px,8vw,72px)}}
+@media(max-width:480px){.portal-scroll{height:calc(100svh + 1250px)}.portal-copy{left:20px;right:20px;bottom:15%}.portal-copy h2{font-size:44px}.portal-credit{left:20px;right:20px;bottom:22px}}
+@media(prefers-reduced-motion:reduce){.portal-scroll{height:100svh}.portal-arch,.portal-landscape{transform:none!important;will-change:auto!important}.portal-copy{opacity:1;transform:none}}

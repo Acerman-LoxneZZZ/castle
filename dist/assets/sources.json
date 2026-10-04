@@ -55,5 +55,12 @@
     "license": "CC BY-SA 4.0",
     "role": "Full-screen gallery landscape background",
     "display": "Unmodified original file; CSS crop and dark overlay"
+  },
+  "portal-arch.png": {
+    "origin": "Built-in ImageGen; fictional Gothic gateway inspired by supplied castle-hd.png",
+    "role": "Transparent photographic foreground for the scroll-through arch episode",
+    "dimensions": "1536x1024 RGBA",
+    "prompt": ".impeccable/asset-prompts/portal-arch.txt",
+    "display": "Native generated alpha; unmodified file; CSS scale"
   }
 }
