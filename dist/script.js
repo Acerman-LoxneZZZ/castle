@@ -2,7 +2,7 @@
 'use strict';
 const cinema=document.querySelector('.cinema-scroll'),stage=document.querySelector('.stage');
 const header=document.querySelector('.site-header'),intro=document.querySelector('.intro-copy'),bottom=document.querySelector('.hero-bottom');
-const portal=document.querySelector('.portal-scroll'),portalStage=document.querySelector('.portal-stage');
+const portal=document.querySelector('.portal-scroll'),portalStage=document.querySelector('.portal-stage'),afterword=document.querySelector('.portal-afterword');
 const chapter=document.querySelector('.chapter-scroll'),chapterStage=document.querySelector('.chapter-stage');
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const clamp=(v,min=0,max=1)=>Math.min(max,Math.max(min,v)),ease=v=>v*v*(3-2*v);
@@ -14,7 +14,7 @@ const first=makeGallery(cinema.querySelector('.gallery-stage'),stage,'first',['�
 const second=makeGallery(chapter.querySelector('.gallery-stage'),chapterStage,'chapter',['Гогенцоллерн','Мон-Сен-Мишель','Алькасар Сеговии']);
 function measure(){
  const heroRun=parseFloat(getComputedStyle(cinema).getPropertyValue('--hero-run')),total=cinema.offsetHeight-stage.offsetHeight;
- geometry={top:cinema.offsetTop,heroRun,portalTop:portal.offsetTop,portalRun:Math.max(1,portal.offsetHeight-portalStage.offsetHeight)};
+ geometry={top:cinema.offsetTop,heroRun,portalTop:portal.offsetTop,portalRun:Math.max(1,portal.offsetHeight-portalStage.offsetHeight),portalTravelRun:parseFloat(getComputedStyle(portal).getPropertyValue('--portal-travel-run'))};
  first.top=cinema.offsetTop+heroRun;first.run=total-heroRun;
  second.top=chapter.offsetTop;second.run=Math.max(1,chapter.offsetHeight-chapterStage.offsetHeight);
  requestTick();
@@ -43,7 +43,9 @@ function update(){
  paintGallery(first);paintGallery(second);
  // Keep an off-screen sticky chapter's links out of keyboard navigation.
  second.container.inert=smooth<second.top-innerHeight*.8||smooth>second.top+chapter.offsetHeight;
- const passage=clamp((smooth-geometry.portalTop)/geometry.portalRun),travel=ease(clamp((passage-.06)/.84));
+ const portalDistance=smooth-geometry.portalTop,passage=clamp(portalDistance/geometry.portalTravelRun),travel=ease(clamp((passage-.06)/.84));
+ const reveal=reduced.matches?1:ease(clamp((portalDistance-geometry.portalTravelRun-80)/420));
+ portal.style.setProperty('--afterword-opacity',reveal.toFixed(4));portal.style.setProperty('--afterword-y',`${(1-reveal)*20}px`);afterword.inert=reveal<.98;
  portal.style.setProperty('--portal-scale',(1+travel*4.2).toFixed(4));portal.style.setProperty('--landscape-scale',(1.12-travel*.12).toFixed(4));
  portal.classList.toggle('is-near',smooth>geometry.portalTop-innerHeight&&smooth<geometry.portalTop+portal.offsetHeight);
  if(Math.abs(target-smooth)>.12)requestTick();

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-04T20:27:53Z",
+  "generatedAt": "2026-10-04T21:12:14Z",
   "title": "Design System: Castle — Камень и время",
   "extensions": {
     "colorMeta": {
@@ -152,12 +152,17 @@
       {
         "name": "portal-travel",
         "purpose": "Reversible scroll passage through a native alpha stone gateway; foreground grows from 1 to 5.2 around 50% 65%, landscape settles from 1.12 to 1 around 50% 60%. Uses the existing .15 scroll interpolation; no pointer response or scroll lock.",
-        "value": "passage=clamp((smooth-portalTop)/portalRun); travel=ease(clamp((passage-.06)/.84)); ease(v)=v*v*(3-2*v); arch=1+travel*4.2; landscape=1.12-travel*.12"
+        "value": "passage=clamp((smooth-portalTop)/portalTravelRun); portalTravelRun=1800px desktop,1250px mobile; travel=ease(clamp((passage-.06)/.84)); ease(v)=v*v*(3-2*v); arch=1+travel*4.2; landscape=1.12-travel*.12"
+      },
+      {
+        "name": "portal-afterword",
+        "purpose": "Reveal centered Russian reading copy after the unchanged original flight; delay 80px, fade and settle upward by 20px over 420px scroll, then hold. Reversible; inert below .98 reveal.",
+        "value": "reveal=ease(clamp((portalDistance-portalTravelRun-80)/420)); opacity=reveal; translateY=(1-reveal)*20px"
       },
       {
         "name": "portal-reduced-motion",
-        "purpose": "Static arch and landscape with screen-reader-only heading and persistent attribution in one 100svh section. Transform hints are disabled; normal mode enables hints only near the section.",
-        "value": "prefers-reduced-motion: reduce; image transform:none!important; will-change:auto!important; section height:100svh"
+        "purpose": "Stationary landscape reading screen with visible afterword, hidden decorative arch, screen-reader-only section heading and persistent attribution. Transform hints are disabled; normal mode enables image hints only near the section.",
+        "value": "prefers-reduced-motion: reduce; image transform:none!important; will-change:auto!important; section height:auto; stage position:relative,height:auto,min-height:100svh; afterword position:relative,min-height:100svh,opacity:1,transform:none!important; arch display:none"
       }
     ],
     "breakpoints": [
@@ -199,16 +204,28 @@
       "provenance": "dist/assets/sources.json",
       "layout": {
         "stage": "position:sticky; top:0; height:100svh; overflow:hidden; isolation:isolate",
-        "sectionHeight": "calc(100svh + 1800px)",
-        "mobileSectionHeight": "calc(100svh + 1250px) at max-width:480px",
-        "reducedMotionSectionHeight": "100svh",
+        "sectionHeight": "calc(100svh + 2800px)",
+        "mobileSectionHeight": "calc(100svh + 2100px) at max-width:480px",
+        "originalTravelRun": "--portal-travel-run:1800px; 1250px at max-width:480px",
+        "readingTail": "1000px desktop; 850px mobile",
+        "reducedMotionSectionHeight": "auto; relative stage and afterword min-height:100svh",
         "images": "position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none",
         "credit": "bottom:24px; left/right:24px; max-width:480px bottom:22px and gutters:20px",
         "shade": "linear-gradient(180deg,rgba(8,16,12,.26),transparent 40%,rgba(9,22,17,.65))"
       },
       "accessibility": {
         "heading": "Screen-reader-only h2: Проход через каменную арку; section aria-labelledby=portal-title",
-        "visibleCopy": "No visible heading or scroll instruction; photographer/license credit remains visible"
+        "visibleCopy": "No visible heading or scroll instruction during flight; authored afterword appears afterward. Photographer/license credit remains above the reading wash and clickable.",
+        "afterword": "Semantic h3 and paragraph; inert until reveal >= .98. Reduced motion shows copy immediately and hides decorative arch."
+      },
+      "afterword": {
+        "heading": "За порогом — другая тишина.",
+        "paragraph": "Оставьте спешку по эту сторону стен. Впереди — горы, вода и замки, к которым ведёт любопытство.",
+        "layout": "Full-stage centered flex composition; padding:100px 24px; mobile:90px 24px; pointer-events:none",
+        "wash": "rgba(9,22,17,.58)",
+        "headingStyle": "400 clamp(44px,5.5vw,80px)/1.08 Georgia,serif; letter-spacing:-.03em; text-wrap:balance; mobile font-size:42px",
+        "paragraphStyle": "Arial body; font-size:18px; line-height:1.65; max-width:550px; margin-top:30px; text-wrap:pretty; mobile:16px/1.6,margin-top:24px,manual line break hidden",
+        "scope": "Surface-specific composition; no new reusable token primitives or images"
       }
     },
     "galleryContinuation": {
@@ -275,9 +292,16 @@
     {
       "name": "Portal Attribution",
       "kind": "custom",
-      "description": "Self-contained credit preview for the arch episode. The production heading is screen-reader-only; no visible title or instruction. Photographic layers and scroll geometry are specified in extensions.portal.",
+      "description": "Self-contained credit preview for the arch episode. The section heading stays screen-reader-only; the authored afterword appears after the flight. Photographic layers, reading composition and scroll geometry are specified in extensions.portal.",
       "html": "<section class=\"ds-portal-text\" aria-labelledby=\"ds-portal-title\"><h2 class=\"ds-sr-only\" id=\"ds-portal-title\">Проход через каменную арку</h2><p class=\"ds-portal-credit\"><a href=\"https://commons.wikimedia.org/wiki/File:Alpsee_Neuschwanstein.jpg\" target=\"_blank\" rel=\"noopener\">Пейзаж: Dmytro Balkhovitin</a> · <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a></p></section>",
       "css": ".ds-portal-text{position:relative;padding:24px;background:var(--forest,#172b25);color:var(--paper,#fdf1e1);text-align:center}.ds-sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.ds-portal-credit{margin:0;font:12px/1.4 Arial,Helvetica,sans-serif}.ds-portal-credit a{color:inherit;text-decoration:none}.ds-portal-credit a:hover{text-decoration:underline;text-underline-offset:3px}.ds-portal-credit a:focus-visible{outline:2px solid var(--paper,#fdf1e1);outline-offset:6px}@media(max-width:480px){.ds-portal-text{padding-left:20px;padding-right:20px}}"
+    },
+    {
+      "name": "Portal Afterword",
+      "kind": "custom",
+      "description": "Stationary preview of the authored reading moment after the arch flight; production reveal is specified in extensions.motion.",
+      "html": "<section class=\"ds-afterword\"><h3>За порогом —<br>другая тишина.</h3><p>Оставьте спешку по эту сторону стен.<br> Впереди — горы, вода и замки, к которым ведёт любопытство.</p></section>",
+      "css": ".ds-afterword{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:100px 24px;text-align:center;background:rgba(9,22,17,.58);color:var(--paper,#fdf1e1)}.ds-afterword h3{margin:0;font:400 clamp(44px,5.5vw,80px)/1.08 Georgia,serif;letter-spacing:-.03em;text-wrap:balance}.ds-afterword p{max-width:550px;margin:30px 0 0;font:18px/1.65 Arial,Helvetica,sans-serif;text-wrap:pretty}@media(max-width:480px){.ds-afterword{padding:90px 24px}.ds-afterword h3{font-size:42px}.ds-afterword p{font-size:16px;line-height:1.6;margin-top:24px}.ds-afterword p br{display:none}}"
     }
   ],
   "narrative": {

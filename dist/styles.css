@@ -27,7 +27,7 @@ footer{padding:130px 40px 32px;background:var(--forest)}footer>p{font:400 clamp(
 .gallery-background-credit a:hover{text-decoration:underline;text-underline-offset:3px}
 .gallery-back:nth-child(2) img{object-position:50% 65%}
 
-.portal-scroll{position:relative;height:calc(100svh + 1800px);background:var(--forest);--portal-scale:1;--landscape-scale:1.12}
+.portal-scroll{position:relative;height:calc(100svh + 2800px);background:var(--forest);--portal-travel-run:1800px;--portal-scale:1;--landscape-scale:1.12;--afterword-opacity:1;--afterword-y:0px}
 .portal-stage{position:sticky;top:0;height:100svh;overflow:hidden;isolation:isolate;background:var(--forest)}
 .portal-landscape,.portal-arch{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
 .portal-landscape{object-position:50% 55%;transform:scale(var(--landscape-scale));transform-origin:50% 60%}
@@ -36,7 +36,7 @@ footer{padding:130px 40px 32px;background:var(--forest)}footer>p{font:400 clamp(
 .portal-shade{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(8,16,12,.26),transparent 40%,rgba(9,22,17,.65))}
 .portal-credit{position:absolute;z-index:3;bottom:24px;left:24px;right:24px;text-align:center;font-size:12px;line-height:1.4;color:var(--paper)}
 .portal-credit a:hover{text-decoration:underline;text-underline-offset:3px}
-@media(max-width:480px){.portal-scroll{height:calc(100svh + 1250px)}.portal-credit{left:20px;right:20px;bottom:22px}}
+@media(max-width:480px){.portal-scroll{height:calc(100svh + 2100px);--portal-travel-run:1250px}.portal-credit{left:20px;right:20px;bottom:22px}}
 @media(prefers-reduced-motion:reduce){.portal-scroll{height:100svh}.portal-arch,.portal-landscape{transform:none!important;will-change:auto!important}}
 
 /* The second photographic chapter shares the established frame and controls. */
@@ -46,3 +46,10 @@ footer{padding:130px 40px 32px;background:var(--forest)}footer>p{font:400 clamp(
 .chapter-gallery .gallery-heading{max-width:27vw}
 @media(max-width:900px){.chapter-gallery .gallery-heading{max-width:none}}
 @media(max-width:480px){.chapter-scroll{height:calc(100svh + 2400px)}}
+
+/* A reading pause appears only once the stone gateway has left the view. */
+.portal-afterword{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:100px 24px;text-align:center;pointer-events:none;opacity:var(--afterword-opacity);transform:translateY(var(--afterword-y));background:rgba(9,22,17,.58)}
+.portal-afterword h3{font:400 clamp(44px,5.5vw,80px)/1.08 Georgia,serif;letter-spacing:-.03em;text-wrap:balance}
+.portal-afterword p{max-width:550px;margin-top:30px;font-size:18px;line-height:1.65;text-wrap:pretty}
+@media(max-width:480px){.portal-afterword{padding:90px 24px}.portal-afterword h3{font-size:42px}.portal-afterword p{font-size:16px;margin-top:24px;line-height:1.6}.portal-afterword p br{display:none}}
+@media(prefers-reduced-motion:reduce){.portal-scroll{height:auto}.portal-stage{position:relative;height:auto;min-height:100svh}.portal-afterword{position:relative;min-height:100svh;opacity:1;transform:none!important}.portal-arch{display:none}.portal-landscape{height:100%}}
